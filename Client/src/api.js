@@ -12,12 +12,18 @@ api.interceptors.request.use(config => {
   return config;
 });
 
-// Auto-refresh on 401
+// ── Auto-refresh on 401 — but NOT on the refresh route itself ──
 api.interceptors.response.use(
   res => res,
   async err => {
     const original = err.config;
-    if (err.response?.status === 401 && !original._retry) {
+
+    // Stop if already retried OR if this is the refresh route itself
+    if (
+      err.response?.status === 401 &&
+      !original._retry &&
+      !original.url.includes('/auth/refresh')  // ← prevents loop
+    ) {
       original._retry = true;
       try {
         const res = await axios.post(
