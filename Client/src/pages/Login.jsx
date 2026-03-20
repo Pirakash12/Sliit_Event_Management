@@ -22,12 +22,12 @@ export default function Login() {
       const user = await login(form.email, form.password);
       // Redirect based on role
       const routes = {
-        student:   '/dashboard',
-        organizer: '/dashboard',
-        finance:   '/dashboard',
-        admin:     '/dashboard',
+        student:   '/admindashboard',
+        organizer: '/admindashboard',
+        finance:   '/admindashboard',
+        admin:     '/admindashboard',
       };
-      navigate(routes[user.role] || '/dashboard');
+      navigate(routes[user.role] || '/admindashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
     } finally {
