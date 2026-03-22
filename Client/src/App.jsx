@@ -4,6 +4,7 @@ import Home     from './pages/Home';
 import Login     from './pages/Login';
 import Register  from './pages/Register';
 import AdminDashboard from './pages/AdminDashboard';
+import Feedback from './pages/FeedbackPage';
 
 // Simple protected route
 const Protected = ({ children, roles }) => {
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/"         element={<Home />} />
           <Route path="/login"    element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/feedback" element={<Feedback />} />
           <Route path="/admindashboard" element={
             <Protected>
               <AdminDashboard />
