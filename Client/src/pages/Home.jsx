@@ -83,7 +83,7 @@ export default function Home() {
           <Link to="/"        className="hover:text-white transition-colors">Home</Link>
           <a href="#events"   className="hover:text-white transition-colors">Events</a>
           <a href="#about"    className="hover:text-white transition-colors">About</a>
-          <a href="#feedback"    className="hover:text-white transition-colors">Feedback</a>
+          <Link to="/feedback"    className="hover:text-white transition-colors">Feedback</Link>
         </div>
 
         {/* Auth area */}
@@ -167,6 +167,7 @@ export default function Home() {
           <Link to="/"        onClick={()=>setMobileMenu(false)} className="text-white/60 hover:text-white text-sm py-2.5">Home</Link>
           <a    href="#events" onClick={()=>setMobileMenu(false)} className="text-white/60 hover:text-white text-sm py-2.5">Events</a>
           <a    href="#about"  onClick={()=>setMobileMenu(false)} className="text-white/60 hover:text-white text-sm py-2.5">About</a>
+          <Link to="/feedback" onClick={()=>setMobileMenu(false)} className="text-white/60 hover:text-white text-sm py-2.5">Feedback</Link>
           <div className="h-px bg-white/10 my-2"/>
           {user ? (
             <>
@@ -371,6 +372,7 @@ export default function Home() {
           <div className="flex items-center gap-6 text-sm text-white/20">
             <Link to="/"         className="hover:text-white/50 transition-colors">Home</Link>
             <Link to="/login"    className="hover:text-white/50 transition-colors">Login</Link>
+            <Link to="/feedback" className="hover:text-white/50 transition-colors">Feedback</Link>
             <Link to="/register" className="hover:text-white/50 transition-colors">Register</Link>
             {user && <button onClick={goDashboard} className="hover:text-white/50 transition-colors">Dashboard</button>}
           </div>
