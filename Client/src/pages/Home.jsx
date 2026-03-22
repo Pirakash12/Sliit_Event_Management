@@ -83,6 +83,7 @@ export default function Home() {
           <Link to="/"        className="hover:text-white transition-colors">Home</Link>
           <a href="#events"   className="hover:text-white transition-colors">Events</a>
           <a href="#about"    className="hover:text-white transition-colors">About</a>
+          <a href="#feedback"    className="hover:text-white transition-colors">Feedback</a>
         </div>
 
         {/* Auth area */}
