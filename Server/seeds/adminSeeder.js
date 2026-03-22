@@ -12,18 +12,21 @@ const seedAdmin = async () => {
     process.exit();
   }
 
+  const adminEmail = process.env.ADMIN_EMAIL || 'admin@sliit.lk';
+  const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
+
   await User.create({
     name: 'SLIIT Admin',
-    email: 'admin@sliit.lk',
-    password: 'Admin@1234',   // change this immediately after first login
+    email: adminEmail,
+    password: adminPassword,
     role: 'admin',
-    isVerified: true,          // admin doesn't need email verification
+    isVerified: true,
     studentId: 'ADMIN001'
   });
 
   console.log('Admin seeded successfully');
-  console.log('Email: admin@sliit.lk');
-  console.log('Password: Admin@1234  ← Change this immediately!');
+  console.log('Email:', adminEmail);
+  console.log('Password:', adminPassword);
   process.exit();
 };
 
