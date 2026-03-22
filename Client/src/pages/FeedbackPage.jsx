@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const categories = ["Event Experience", "Club Management", "Communication", "Venue & Logistics", "Other"];
 const events = [
@@ -73,16 +74,16 @@ export default function FeedbackPage() {
       {/* Header */}
       <header className="relative z-10 shrink-0 border-b border-slate-800/60 bg-[#07080f]/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white font-black text-sm shadow-[0_0_14px_rgba(139,92,246,0.55)]">S</div>
             <div>
               <div className="text-white font-bold text-sm leading-none">SLIIT EMS</div>
               <div className="text-slate-600 text-[9px] tracking-widest uppercase mt-0.5">Event Management System</div>
             </div>
-          </div>
+          </Link>
           <nav className="hidden md:flex items-center gap-6 text-xs text-slate-500 font-medium tracking-wide">
-            {["Dashboard","Events","Clubs"].map(n => (
-              <a key={n} href="#" className="hover:text-slate-200 transition-colors">{n}</a>
+            {["Home","Events","Clubs"].map(n => (
+              <Link key={n} to={n === "Home" ? "/" : "#"} className="hover:text-slate-200 transition-colors">{n}</Link>
             ))}
             <span className="text-violet-400 border-b border-violet-500/50 pb-0.5">Feedback</span>
           </nav>
