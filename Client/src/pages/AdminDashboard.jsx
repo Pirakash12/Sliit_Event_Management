@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import api from '../api';
+import { events as dummyEvents, finances as dummyFinances, feedbacks as dummyFeedbacks, certificates as dummyCertificates } from '../data/adminSeeder';
 
 // ── ICON HELPER ──
 const Icon = ({ d, className = "w-5 h-5" }) => (
@@ -540,20 +541,33 @@ export default function AdminDashboard() {
       setLoading(true);
       const results = await Promise.allSettled([
         api.get('/users'),
-        api.get('/events'),
-        api.get('/budgets'),
-        api.get('/feedback'),
-        api.get('/certificates'),
+        // api.get('/events'),
+        // api.get('/budgets'),
+        // api.get('/feedback'),
+        // api.get('/certificates'),
       ]);
       const [u,e,b,f,c] = results;
       if(u.status==='fulfilled') setUsers(u.value.data);
-      if(e.status==='fulfilled') setEvents(e.value.data);
-      if(b.status==='fulfilled') setBudgets(b.value.data);
-      if(f.status==='fulfilled') setFeedbacks(f.value.data);
-      if(c.status==='fulfilled') setCertificates(c.value.data);
+      // if(e.status==='fulfilled') setEvents(e.value.data);
+      // if(b.status==='fulfilled') setBudgets(b.value.data);
+      // if(f.status==='fulfilled') setFeedbacks(f.value.data);
+      // if(c.status==='fulfilled') setCertificates(c.value.data);
       setLoading(false);
     })();
   },[]);
+
+  useEffect(() => {
+  (async () => {
+    setLoading(true);
+    // For demo purposes, use dummy data instead of API calls
+    setUsers([]); // Add dummy users if needed
+    setEvents(dummyEvents);
+    setBudgets(dummyFinances); // Note: finances map to budgets
+    setFeedbacks(dummyFeedbacks);
+    setCertificates(dummyCertificates);
+    setLoading(false);
+  })();
+}, []);
 
   // Actions
   const handleRoleChange    = async(id,role)=>{try{await api.put(`/users/${id}/role`,{role});setUsers(p=>p.map(u=>u._id===id?{...u,role}:u));showToast('Role updated');}catch{showToast('Failed');}};
