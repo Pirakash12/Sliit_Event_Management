@@ -22,9 +22,9 @@ export default function Login() {
       const user = await login(form.email, form.password);
       // Redirect based on role
       const routes = {
-        student:   '/admindashboard',
-        organizer: '/admindashboard',
-        finance:   '/admindashboard',
+        student:   '/',
+        organizer: '/',
+        finance:   '/',
         admin:     '/admindashboard',
       };
       navigate(routes[user.role] || '/admindashboard');
